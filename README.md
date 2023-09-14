@@ -54,7 +54,7 @@ import {OfflineServer} from '@peercrypt/offline-server'
 
 ID.create('*a very strong* seed').then( id => {
 
-  console.log("PeerCrypt Servers starting with ID: " + id.pubKey);
+  console.log("PeerCrypt Server using public ID: " + id.pubKey);
 
   OnlineServer(id);
   OfflineServer(id);
@@ -66,7 +66,7 @@ ID.create('*a very strong* seed').then( id => {
 prints:
 
 ```bash
-PeerCrypt Services starting with public ID: 992f3845a60d8687721db5d722ad3875bfcf09facc5ff340b6bd215ff568ac27
+PeerCrypt Server using public ID: 992f3845a60d8687721db5d722ad3875bfcf09facc5ff340b6bd215ff568ac27
 ```
 
 ### An example On- & Offline PeerCrypt Client
@@ -79,7 +79,7 @@ import { Offline, ID } from "@peercrypt/offline";
 
 ID.create('*strong* seed').then(async (id) => {
 
-console.log("PeerCrypt Clients starting with ID: " + id.pubKey);
+console.log("PeerCrypt Client using public ID: " + id.pubKey);
 
 const serverPubKey = '992f3845a60d8687721db5d722ad3875bfcf09facc5ff340b6bd215ff568ac27';
 
@@ -91,7 +91,7 @@ const serverPubKey = '992f3845a60d8687721db5d722ad3875bfcf09facc5ff340b6bd215ff5
 prints:
 
 ```bash
-PeerCrypt Clients starting with ID: 992f3845a60d8687721db5d722ad3875bfcf09facc5ff340b6bd215ff568ac27
+PeerCrypt Client using public ID: 992f3845a60d8687721db5d722ad3875bfcf09facc5ff340b6bd215ff568ac27
 ```
 
 #### An example: sending messages
