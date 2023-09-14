@@ -91,13 +91,13 @@ const serverPubKey = '992f3845a60d8687721db5d722ad3875bfcf09facc5ff340b6bd215ff5
 prints:
 
 ```bash
-PeerCrypt Client using public ID: 112f3845a60d8687721db5d722ad3875bfcf09facc5ff340b6bd215ff568ac27
+PeerCrypt Client using public ID: 112f3845a60d8687721db5d722ad3875bfcf09facc1ff340b6bd215ff568ac27
 ```
 
 #### An example: sending messages
 
 ```typescript
-const anotherClientPubKey = '112f3845a60d8687721db5d722ad3875bfcf09facc5ff340b6bd215ff568ac27'
+const anotherClientPubKey = '112f3845a60d8687721db5d722ad3875bfcf09facc1ff340b6bd215ff568ac27'
 
 const online = new Online(id);
 const offline = await Offline.register(id);
