@@ -1,0 +1,38 @@
+{
+  "name": "offline-server",
+  "version": "0.0.0",
+  "description": "Server library for offline end-to-end encrypted peer-to-peer push message anonymous endpoint relay",
+  "keywords": [
+    "web-push"
+  ],
+  "author": "bosskabouter <bosskabouter@protonmail.com>",
+  "homepage": "https://github.com/bosskabouter/peercrypt#readme",
+  "license": "MIT",
+  "main": "dist/offline-server.js",
+  "types": "dist/offline-server.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bosskabouter/peercrypt.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "bugs": {
+    "url": "https://github.com/bosskabouter/peercrypt/issues"
+  },
+  "dependencies": {
+    "id": "*"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "typescript": "^5.2.2"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "id",
+  "version": "0.0.0",
+  "description": "Shared library for PeerCrypt ID signatures and encryption",
+  "keywords": [
+    "libsodium"
+  ],
+  "author": "bosskabouter <bosskabouter@protonmail.com>",
+  "homepage": "https://github.com/bosskabouter/peercrypt#readme",
+  "license": "MIT",
+  "main": "dist/id.js",
+  "types": "dist/id.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bosskabouter/peercrypt.git"
+  },
+  "scripts": {
+    "build":"tsc",
+    "test": "jest"
+   },
+  "bugs": {
+    "url": "https://github.com/bosskabouter/peercrypt/issues"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "typescript": "^5.2.2"
+  }
+}

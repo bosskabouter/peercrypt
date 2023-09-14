@@ -21,11 +21,11 @@ The peercrypt library consists of the following packages:
   - [Online](./packages/online/) - P2P encrypted `WebRTC` client
   - [Offline](./packages/offline/) - P2P encrypted `PushSubscription/Notification` client
 - Server packages:
-  - [OnlineServer](/packages/onlineServer/) - authenticating `WebRTC Signaling` server
+  - [OnlineServer](/packages/onlineServer/) (optional) - authenticating `WebRTC Signaling` server
   - [OfflineServer](/packages/offlineServer/) - anonymized `Push Endpoint Relay` server
-- Key encryption packages
-  - [ID](/packages/id/) - the core component, key and encryption shared library, already included in client and server packages
-  - [BIP](/packages/bip/) - BIP32 HD Key and BIP39 mnemonic recovery phrase
+- shared packages:
+  - [ID](/packages/id/) - ID contains asymmetric Signing and encryption keys. Already included in client and server packages
+  - [BIP (optional)](/packages/bip/) - Optional BIP32 Hierarchical Deterministic wallet Key and BIP39 mnemonic seed recovery phrase
 
 For detailed information about each package, see their respective pages.
 
@@ -33,7 +33,7 @@ For detailed information about each package, see their respective pages.
 
 ### PeerCrypt ID
 
-All participants (client peers as well as server instances) need a `PeerCrypt ID` key which holds asymmetric keys for signing and encryption purposes, both derived from a common private seed (if provided). The shared library is exported from all client and server packages, but can be imported from `"@peercrypt/id"`;
+All participants (client peers as well as server instances) need a `PeerCrypt ID` key which holds asymmetric keys for signing and encryption purposes, both derived from a common private seed (if provided). The shared library is exported from all client and server packages, but can also be imported directly from `"@peercrypt/id"`;
 
 ````typescript
 import { ID } from "@peercrypt/id"; // or import from any of the other packages;
@@ -58,14 +58,15 @@ ID.create('*a very strong* seed').then( id => {
 
   OnlineServer(id);
   OfflineServer(id);
- })
+
+})
 
 ````
 
 prints:
 
 ```bash
-PeerCrypt Servers starting with ID: 992f3845a60d8687721db5d722ad3875bfcf09facc5ff340b6bd215ff568ac27
+PeerCrypt Services starting with public ID: 992f3845a60d8687721db5d722ad3875bfcf09facc5ff340b6bd215ff568ac27
 ```
 
 ### An example On- & Offline PeerCrypt Client
@@ -80,8 +81,10 @@ ID.create('*strong* seed').then(async (id) => {
 
 console.log("PeerCrypt Clients starting with ID: " + id.pubKey);
 
-  const online = new Online(id);
-  const offline = await Offline.register(id);
+const serverPubKey = '992f3845a60d8687721db5d722ad3875bfcf09facc5ff340b6bd215ff568ac27';
+
+  const onlineClient = new Online(id, serverPubKey);
+  const offlineClient = await Offline.register(id, serverPubKey);
 });
 ```
 

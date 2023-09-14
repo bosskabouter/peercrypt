@@ -1,0 +1,39 @@
+{
+  "name": "bip",
+  "version": "0.0.0",
+  "description": "BIP32 Hierarchical Deterministic wallet and BIP39 mnemonic seed recovery phrase",
+  "keywords": [
+    "BIP32",
+    "BIP39"
+  ],
+  "author": "bosskabouter <bosskabouter@protonmail.com>",
+  "homepage": "https://github.com/bosskabouter/peercrypt#readme",
+  "license": "MIT",
+  "main": "dist/bip.js",
+  "types": "dist/bip.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bosskabouter/peercrypt.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "bugs": {
+    "url": "https://github.com/bosskabouter/peercrypt/issues"
+  },
+  "dependencies": {
+    "id": "*"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "typescript": "^5.2.2"
+  }
+}
