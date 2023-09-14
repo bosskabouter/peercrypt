@@ -1,0 +1,75 @@
+0 silly argv {
+0 silly argv   _: [ 'version' ],
+0 silly argv   lernaVersion: '6.6.2',
+0 silly argv   '$0': 'node_modules/.bin/lerna'
+0 silly argv }
+1 notice cli v6.6.2
+2 verbose rootPath /home/boss/Develop/peercrypt
+3 info current version 0.0.0
+4 silly isAnythingCommitted
+5 verbose isAnythingCommitted 1
+6 silly getCurrentBranch
+7 verbose currentBranch master
+8 silly remoteBranchExists
+9 silly isBehindUpstream
+10 silly isBehindUpstream master is behind origin/master by 0 commit(s) and ahead by 1
+11 silly hasTags
+12 verbose hasTags false
+13 info Assuming all packages changed
+14 verbose updated bip
+15 verbose updated id
+16 verbose updated offline-server
+17 verbose updated offline
+18 verbose updated online-server
+19 verbose updated online
+20 verbose git-describe undefined => "8782896"
+21 silly git-describe parsed => {"refCount":"2","sha":"8782896","isDirty":false}
+22 info execute Skipping releases
+23 silly lifecycle No script for "preversion" in "root", continuing
+24 silly lifecycle No script for "preversion" in "id", continuing
+25 verbose version id has no lockfile. Skipping lockfile update.
+26 silly lifecycle No script for "version" in "id", continuing
+27 silly lifecycle No script for "preversion" in "bip", continuing
+28 silly lifecycle No script for "preversion" in "offline-server", continuing
+29 silly lifecycle No script for "preversion" in "offline", continuing
+30 silly lifecycle No script for "preversion" in "online-server", continuing
+31 verbose version bip has no lockfile. Skipping lockfile update.
+32 verbose version offline-server has no lockfile. Skipping lockfile update.
+33 verbose version offline has no lockfile. Skipping lockfile update.
+34 verbose version online-server has no lockfile. Skipping lockfile update.
+35 silly lifecycle No script for "version" in "bip", continuing
+36 silly lifecycle No script for "preversion" in "online", continuing
+37 verbose version online has no lockfile. Skipping lockfile update.
+38 silly lifecycle No script for "version" in "offline", continuing
+39 silly lifecycle No script for "version" in "offline-server", continuing
+40 silly lifecycle No script for "version" in "online-server", continuing
+41 silly lifecycle No script for "version" in "online", continuing
+42 silly lifecycle No script for "version" in "root", continuing
+43 silly gitAdd [
+43 silly gitAdd   'packages/id/package.json',
+43 silly gitAdd   'packages/bip/package.json',
+43 silly gitAdd   'packages/offline/package.json',
+43 silly gitAdd   'packages/offline-server/package.json',
+43 silly gitAdd   'packages/online-server/package.json',
+43 silly gitAdd   'packages/online/package.json',
+43 silly gitAdd   'lerna.json'
+43 silly gitAdd ]
+44 silly gitCommit v0.1.0-alpha.0
+45 verbose git [ 'commit', '-m', 'v0.1.0-alpha.0' ]
+46 silly gitTag v0.1.0-alpha.0 git tag %s -m %s
+47 verbose git [ 'tag', 'v0.1.0-alpha.0', '-m', 'v0.1.0-alpha.0' ]
+48 silly lifecycle No script for "postversion" in "bip", continuing
+49 silly lifecycle No script for "postversion" in "id", continuing
+50 silly lifecycle No script for "postversion" in "offline-server", continuing
+51 silly lifecycle No script for "postversion" in "offline", continuing
+52 silly lifecycle No script for "postversion" in "online-server", continuing
+53 silly lifecycle No script for "postversion" in "online", continuing
+54 silly lifecycle No script for "postversion" in "root", continuing
+55 info git Pushing tags...
+56 silly gitPush origin master
+57 error Error: Command failed with exit code 128: git push --follow-tags --no-verify --atomic origin master
+57 error remote: Support for password authentication was removed on August 13, 2021.
+57 error remote: Please see https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+57 error fatal: Authentication failed for 'https://github.com/bosskabouter/peercrypt.git/'
+57 error     at makeError (/home/boss/Develop/peercrypt/node_modules/@lerna/child-process/node_modules/execa/lib/error.js:60:11)
+57 error     at handlePromise (/home/boss/Develop/peercrypt/node_modules/@lerna/child-process/node_modules/execa/index.js:118:26)
