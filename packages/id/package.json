@@ -1,6 +1,6 @@
 {
   "name": "id",
-  "version": "0.0.0",
+  "version": "0.1.0-alpha.0",
   "description": "Shared library for PeerCrypt ID signatures and encryption",
   "keywords": [
     "libsodium"
@@ -22,9 +22,9 @@
     "url": "git+https://github.com/bosskabouter/peercrypt.git"
   },
   "scripts": {
-    "build":"tsc",
+    "build": "tsc",
     "test": "jest"
-   },
+  },
   "bugs": {
     "url": "https://github.com/bosskabouter/peercrypt/issues"
   },

@@ -1,6 +1,6 @@
 {
   "name": "online",
-  "version": "0.0.0",
+  "version": "0.1.0-alpha.0",
   "description": "Client library for online end-to-end encrypted peer-to-peer messaging and (video) calling",
   "keywords": [
     "peerjs"
@@ -22,14 +22,14 @@
     "url": "git+https://github.com/bosskabouter/peercrypt.git"
   },
   "scripts": {
-    "build":"tsc",
+    "build": "tsc",
     "test": "jest"
-   },
+  },
   "bugs": {
     "url": "https://github.com/bosskabouter/peercrypt/issues"
   },
   "dependencies": {
-    "id": "*"
+    "id": "^0.1.0-alpha.0"
   },
   "devDependencies": {
     "jest": "^29.7.0",
