@@ -1,6 +1,6 @@
 {
   "name": "online",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Client library for online end-to-end encrypted peer-to-peer messaging and (video) calling",
   "keywords": [
     "peerjs"
@@ -29,7 +29,7 @@
     "url": "https://github.com/bosskabouter/peercrypt/issues"
   },
   "dependencies": {
-    "id": "^1.0.0"
+    "id": "^1.0.1"
   },
   "devDependencies": {
     "jest": "^29.7.0",
