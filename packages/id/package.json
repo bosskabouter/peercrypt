@@ -1,5 +1,5 @@
 {
-  "name": "id",
+  "name": "@peercrypt/id",
   "version": "1.0.4",
   "description": "Shared library for PeerCrypt ID signatures and encryption",
   "keywords": [
@@ -32,5 +32,5 @@
     "jest": "^29.7.0",
     "typescript": "^5.2.2"
   },
-  "gitHead": "8060f42817b9b1b8df9fc356402679fcdfe1355e"
+  "gitHead": "d3e00e30cbebc045b567ec6847c1145395fefba7"
 }

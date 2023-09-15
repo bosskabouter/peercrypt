@@ -1,5 +1,5 @@
 {
-  "name": "root",
+  "name": "peercrypt",
   "private": true,
   "workspaces": [
     "packages/*"

@@ -1,5 +1,5 @@
 {
-  "name": "bip",
+  "name": "@peercrypt/bip",
   "version": "1.0.4",
   "description": "BIP32 Hierarchical Deterministic wallet and BIP39 mnemonic seed recovery phrase",
   "keywords": [
@@ -30,11 +30,11 @@
     "url": "https://github.com/bosskabouter/peercrypt/issues"
   },
   "dependencies": {
-    "id": "^1.0.4"
+    "@peercrypt/id": "*"
   },
   "devDependencies": {
     "jest": "^29.7.0",
     "typescript": "^5.2.2"
   },
-  "gitHead": "8060f42817b9b1b8df9fc356402679fcdfe1355e"
+  "gitHead": "d3e00e30cbebc045b567ec6847c1145395fefba7"
 }
