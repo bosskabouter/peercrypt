@@ -1,6 +1,6 @@
 {
   "name": "peercrypt",
-  "private": true,
+  "private": false,
   "workspaces": [
     "packages/*"
   ],
