@@ -1,5 +1,6 @@
 {
-  "name": "@peercrypt/online",
+  "name": "@peercrypt/online",  "private": false,
+
   "version": "1.0.7",
   "description": "Client library for online end-to-end encrypted peer-to-peer messaging and (video) calling",
   "keywords": [
@@ -35,5 +36,5 @@
     "jest": "^29.7.0",
     "typescript": "^5.2.2"
   },
-  "gitHead": "18c91e0970c7dfe25510532a080e62b4efbbaaf3"
+  "gitHead": "a62c4eacc775f92af9ecb811af9fb816cfb1e8a8"
 }
