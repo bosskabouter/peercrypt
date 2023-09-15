@@ -1,7 +1,7 @@
 {
-  "name": "@peercrypt/online",  "private": false,
-
-  "version": "1.0.7",
+  "name": "@peercrypt/online",
+  "private": false,
+  "version": "1.0.8",
   "description": "Client library for online end-to-end encrypted peer-to-peer messaging and (video) calling",
   "keywords": [
     "peerjs"
@@ -30,7 +30,7 @@
     "url": "https://github.com/bosskabouter/peercrypt/issues"
   },
   "dependencies": {
-    "@peercrypt/id": "^1.0.7"
+    "@peercrypt/id": "^1.0.8"
   },
   "devDependencies": {
     "jest": "^29.7.0",

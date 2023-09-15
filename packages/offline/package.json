@@ -1,7 +1,7 @@
 {
-  "name": "@peercrypt/offline",  "private": false,
-
-  "version": "1.0.7",
+  "name": "@peercrypt/offline",
+  "private": false,
+  "version": "1.0.8",
   "description": "Client library for offline end-to-end encrypted peer-to-peer push messages",
   "keywords": [
     "web-push"
@@ -30,7 +30,7 @@
     "url": "https://github.com/bosskabouter/peercrypt/issues"
   },
   "dependencies": {
-    "@peercrypt/id": "^1.0.7"
+    "@peercrypt/id": "^1.0.8"
   },
   "devDependencies": {
     "jest": "^29.7.0",
