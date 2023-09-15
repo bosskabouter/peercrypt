@@ -1,6 +1,6 @@
 {
   "name": "@peercrypt/offline-server",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Server library for offline end-to-end encrypted peer-to-peer push message anonymous endpoint relay",
   "keywords": [
     "web-push"
@@ -29,7 +29,7 @@
     "url": "https://github.com/bosskabouter/peercrypt/issues"
   },
   "dependencies": {
-    "@peercrypt/id": "^1.0.6"
+    "@peercrypt/id": "^1.0.7"
   },
   "devDependencies": {
     "jest": "^29.7.0",

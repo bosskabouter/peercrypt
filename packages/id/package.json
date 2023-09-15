@@ -1,6 +1,6 @@
 {
   "name": "@peercrypt/id",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Shared library for PeerCrypt ID signatures and encryption",
   "keywords": [
     "libsodium"
