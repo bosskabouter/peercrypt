@@ -1,6 +1,6 @@
 {
   "name": "online-server",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Server library for online end-to-end encrypted peer-to-peer signaling with identity authentication",
   "keywords": [
     "peerjs-server"
@@ -29,7 +29,7 @@
     "url": "https://github.com/bosskabouter/peercrypt/issues"
   },
   "dependencies": {
-    "id": "^1.0.1"
+    "id": "^1.0.2"
   },
   "devDependencies": {
     "jest": "^29.7.0",
