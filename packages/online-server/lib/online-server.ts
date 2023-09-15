@@ -2,7 +2,7 @@
 
 module.exports = onlineServer;
 
-import { id } from "id"
+import { id } from "@peercrypt/id"
 function onlineServer() {
   console.info(id());
   return 'Hello from onlineServer';
