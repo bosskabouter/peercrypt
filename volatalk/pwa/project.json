@@ -1,0 +1,82 @@
+{
+  "name": "volatalk-pwa",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "volatalk/pwa/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/volatalk/pwa"
+      },
+      "configurations": {
+        "development": {
+          "watch": true,
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "volatalk-pwa:build",
+        "proxyConfig": "volatalk/pwa/proxy.conf.json"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "volatalk-pwa:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "volatalk-pwa:build:production",
+          "hmr": false,
+          "cors": true,
+          "force": true
+        }
+      }
+    },
+    "preview": {
+      "executor": "@nx/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "volatalk-pwa:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "volatalk-pwa:build:development"
+        },
+        "production": {
+          "buildTarget": "volatalk-pwa:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/volatalk/pwa"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["volatalk/pwa/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "volatalk-pwa:build"
+      }
+    }
+  },
+  "tags": []
+}

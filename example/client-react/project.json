@@ -1,0 +1,78 @@
+{
+  "name": "example-client-react",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "example/client-react/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/example/client-react"
+      },
+      "configurations": {
+        "development": {"watch": true,
+          "mode": "development","minify":false
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "example-client-react:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "example-client-react:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "example-client-react:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "preview": {
+      "executor": "@nx/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "example-client-react:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "example-client-react:build:development"
+        },
+        "production": {
+          "buildTarget": "example-client-react:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/example/client-react"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["example/client-react/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "example-client-react:build"
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,48 @@
+{
+  "name": "offline-server",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/offline/server/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/offline/server",
+        "tsConfig": "libs/offline/server/tsconfig.lib.json",
+        "packageJson": "libs/offline/server/package.json",
+        "main": "libs/offline/server/src/index.ts",
+        "assets": ["libs/offline/server/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs offline-server {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/offline/server/**/*.ts",
+          "libs/offline/server/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/offline/server/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,14 @@
+{
+  "name": "@peercrypt/example-client-react",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {},
+  "private": true,
+  "dependencies": {
+    "@peercrypt/offline-client": "file:../../libs/offline/client",
+    "@peercrypt/online-client": "file:../../libs/online/client"
+  },        
+  "nx": {
+    "includedScripts": []
+  }
+}

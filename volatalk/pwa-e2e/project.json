@@ -1,0 +1,33 @@
+{
+  "name": "volatalk-pwa-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "volatalk/pwa-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "volatalk/pwa-e2e/cypress.config.ts",
+        "devServerTarget": "volatalk-pwa:serve:development",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "volatalk-pwa:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "volatalk-pwa:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["volatalk/pwa-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["volatalk-pwa"]
+}
