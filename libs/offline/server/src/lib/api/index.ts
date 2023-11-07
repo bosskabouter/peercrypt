@@ -5,7 +5,7 @@ import {Router} from "express";
 
 import PublicApi from "./v1/public";
 import type { EP2PushServerConfig } from "../config";
- import  * as pubContent from "../app.json" ;
+import  * as pubContent from "../app.json" ;
 import { ID } from "../../";
 import version from "./version";
 

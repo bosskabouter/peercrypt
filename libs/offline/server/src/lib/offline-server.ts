@@ -12,7 +12,7 @@ export * from "@peercrypt/shared";
 // export * from "@ep2/push";                                                                               
 
 export function ExpressOfflineServer(
-  key: ID,
+  id: ID,
   server: HttpsServer | HttpServer,
   options?: Partial<EP2PushServerConfig>
 ): Express {
@@ -37,14 +37,14 @@ export function ExpressOfflineServer(
       );
     }
 
-    createInstance({ key, app, options: newOptions });
+    createInstance({ key: id, app, options: newOptions });
   });
 
   return app as Express;
 }
 
 export function OfflineServer(
-  key: ID,
+  id: ID,
   options: Partial<EP2PushServerConfig> = {},
   callback?: (server: HttpsServer | HttpServer) => void
 ): Express {
@@ -69,11 +69,11 @@ export function OfflineServer(
     server = createHttpServer(app);
   }
 
-  const eP2PeerServer = ExpressOfflineServer(key, server, newOptions);
-  app.use(eP2PeerServer);
+  const offlineServer = ExpressOfflineServer(id, server, newOptions);
+  app.use(offlineServer);
 
   server.listen(port, host, () => callback?.(server));
 
-  return eP2PeerServer;
+  return offlineServer;
 }
 

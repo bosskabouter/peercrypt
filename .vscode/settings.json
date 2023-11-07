@@ -1,10 +1,11 @@
 {
     "cSpell.words": [
-        "bosskabouter",
         "cacheable",
         "libsodium",
         "nrwl",
         "peercrypt",
-        "peerjs"
+        "peerjs",
+        "proxied",
+        "Vola"
     ]
 }

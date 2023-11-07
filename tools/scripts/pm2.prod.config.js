@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "Volatalk-Peer-Prod",
+      name: "Volatalk-Server-Prod",
       script: ".. /../volatalk/prod/current/server/volapeer/dist/index.js",
       watch: false,
       env: {

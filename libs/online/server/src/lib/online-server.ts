@@ -1,23 +1,22 @@
-
-import type { Server as HttpsServer } from "https";
-import type { Server as HttpServer } from "http";
-import type { Express } from "express";
+import type { Server as HttpsServer } from 'https';
+import type { Server as HttpServer } from 'http';
+import type { Express } from 'express';
 import {
   type IClient,
   type IConfig,
   type PeerServerEvents,
   PeerServer,
   ExpressPeerServer,
-} from "peer";
+} from 'peer';
 
-import { ID } from "@peercrypt/shared";
-import version from "./version/";
+import { ID } from '@peercrypt/shared';
+import version from './version/';
 
-export * from "@peercrypt/shared";
+export * from '@peercrypt/shared';
 
 interface OnlineServerEvents {
   on: (
-    event: "handshake-error",
+    event: 'handshake-error',
     listener: (event: {
       client: IClient;
       token: string;
@@ -26,14 +25,14 @@ interface OnlineServerEvents {
   ) => this;
 }
 export function ExpressOnlineServer(
-  ID: ID,
+  id: ID,
   server: HttpsServer | HttpServer,
   options?: Partial<IConfig>
 ): Express & PeerServerEvents & OnlineServerEvents {
   return initialize(
     ExpressPeerServer(server, options),
-    ID,
-    options?.path ? options.path : "/"
+    id,
+    options?.path ? options.path : '/'
   );
 }
 
@@ -45,7 +44,7 @@ export function OnlineServer(
   return initialize(
     PeerServer(options, callback),
     ID,
-    options?.path ? options.path : "/"
+    options?.path ? options.path : '/'
   );
 }
 
@@ -54,7 +53,7 @@ function initialize(
   ID: ID,
   path: string
 ): Express & PeerServerEvents & OnlineServerEvents {
-  server.on("connection", (client: IClient) => {
+  server.on('connection', (client: IClient) => {
     const token = client.getToken();
     const clientId = client.getId();
     try {
@@ -67,16 +66,14 @@ function initialize(
         decrypted.peerId !== client.getId() ||
         decrypted.serverId !== ID.publicIdentifier
       ) {
-        throw Error("Invalid Handshake: " + client.getId());
+        throw Error('Invalid Handshake: ' + client.getId());
       }
     } catch (error: unknown) {
       client.getSocket()?.close();
-      server.emit("handshake-error", { client, token, error });
+      server.emit('handshake-error', { client, token, error });
     }
   });
-  console.info("Version: " + version);
-  console.info("path: " + path);
 
-  server.get(path + "/version", (_req, res) => res.send(version));
+  server.get(path + '/version', (_req, res) => res.send(version));
   return server as Express & PeerServerEvents & OnlineServerEvents;
 }

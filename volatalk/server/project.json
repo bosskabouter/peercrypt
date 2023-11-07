@@ -25,7 +25,7 @@
         }
       },
       "configurations": {
-        "development": {},
+        "development": { },
         "production": {
           "esbuildOptions": {
             "sourcemap": false,
