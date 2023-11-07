@@ -6,6 +6,7 @@
         "peercrypt",
         "peerjs",
         "proxied",
-        "Vola"
+        "Vola",
+        "volatalk"
     ]
 }

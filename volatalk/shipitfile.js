@@ -8,9 +8,9 @@ module.exports = (shipit) => {
   shipit.initConfig({
     default: {
       servers: "admin@volatalk.org",
-      branch: "main",
+      branch: "master",
       deployTo: projectRoot + "/test",
-      repositoryUrl: "https://github.com/bosskabouter/peercrypt2.git",
+      repositoryUrl: "https://github.com/bosskabouter/peercrypt.git",
       keepReleases: 5,
       shared: {
         overwrite: true,
@@ -26,10 +26,10 @@ module.exports = (shipit) => {
       },
     },
     prod: {
-      branch: "main",
+      branch: "master",
       deployTo: projectRoot + "/prod",
       pm2: {
-        json: projectRoot + "/prod/current/server/pm2.prod.config.js",
+        json: projectRoot + "/prod/current/volatalk/server/pm2.prod.config.js",
 
       },
     },
@@ -43,11 +43,11 @@ module.exports = (shipit) => {
     const desWWW = `/var/www/volatalk/${conf.branch}/`;
     const cmdCopyClientWWW = `mkdir ${desWWW} -p & cp -R ${srcClientBuild} ${desWWW}`;
 
-    const cdServer = `cd ${conf.deployTo}/current/server && `;
+    const cdServer = `cd ${conf.deployTo}/current/ && `;
     runRemote(cdServer + `npm i`);
 
 
-    runRemote(cmdCopyClientWWW);
+   // runRemote(cmdCopyClientWWW);
   });
 
   async function runRemote(cmd) {

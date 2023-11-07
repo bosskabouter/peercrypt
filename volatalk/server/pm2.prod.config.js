@@ -2,11 +2,11 @@ module.exports = {
   apps: [
     {
       name: "Volatalk-Server-Prod",
-      script: ".. /../volatalk/prod/current/server/volapeer/dist/index.js",
+      
+      script: "volatalk/dist/volatalk/server/main.js",
       watch: false,
       env: {
         PORT: 2000,
-        CTX: "/volapeer",
       },
     },
     // {
