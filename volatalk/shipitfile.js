@@ -29,7 +29,7 @@ module.exports = (shipit) => {
       branch: "master",
       deployTo: projectRoot + "/prod",
       pm2: {
-        json: projectRoot + "/prod/current/volatalk/server/pm2.prod.config.js",
+        json: projectRoot + "/prod/current/volatalk/pm2.prod.config.js",
 
       },
     },
