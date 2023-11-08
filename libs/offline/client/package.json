@@ -1,7 +1,7 @@
 {
   "name": "@peercrypt/offline-client",
+  "description": "P2P encrypted `PushSubscription/Notification` client for @peercrypt/offline-server",
   "dependencies": {
-    "tslib": "^2.3.0",
     "@peercrypt/shared":"*",
     "axios":"^1.5.1",
     "eventemitter3":"^5.0.1"
