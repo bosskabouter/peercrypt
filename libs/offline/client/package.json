@@ -1,5 +1,5 @@
 {
-  "name": "@peercrypt/offline-client",
+  "name": "@peercrypt/offline",
   "description": "P2P encrypted `PushSubscription/Notification` client for @peercrypt/offline-server",
   "dependencies": {
     "@peercrypt/shared":"*",

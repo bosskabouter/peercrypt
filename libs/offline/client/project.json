@@ -1,5 +1,5 @@
 {
-  "name": "offline-client",
+  "name": "offline",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/offline/client/src",
   "projectType": "library",
@@ -15,7 +15,7 @@
       }
     },
     "publish": {
-      "command": "node tools/scripts/publish.mjs offline-client {args.ver} {args.tag}",
+      "command": "node tools/scripts/publish.mjs offline {args.ver} {args.tag}",
       "dependsOn": ["build"]
     },
     "lint": {

@@ -1,5 +1,5 @@
 {
-  "name": "@peercrypt/online-client",
+  "name": "@peercrypt/online",
   "description": "P2P encrypted `WebRTC` client",
   "dependencies": {
     "@peercrypt/shared":"*",

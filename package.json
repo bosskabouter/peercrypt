@@ -67,12 +67,11 @@
     "vitest": "~0.34.6",
     "workbox-core": "^7.0.0",
     "ngx-deploy-npm": "^1.0.0"
-
   },
   "dependencies": {
-    "@peercrypt/offline-client": "file:libs/offline/client",
+    "@peercrypt/offline": "file:libs/offline/client",
     "@peercrypt/offline-server": "file:libs/offline/server",
-    "@peercrypt/online-client": "file:libs/online/client",
+    "@peercrypt/online": "file:libs/online/client",
     "@peercrypt/online-server": "file:libs/online/server",
     "@peercrypt/shared": "file:libs/shared",
     "@swc/helpers": "~0.5.2",
@@ -80,7 +79,6 @@
     "dexie": "^3.2.4",
     "eventemitter3": "^5.0.1",
     "express": "~4.18.1",
-    
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "6.11.2",

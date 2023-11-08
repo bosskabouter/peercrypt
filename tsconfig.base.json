@@ -14,9 +14,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@peercrypt/offline-client": ["libs/offline/client/src/index.ts"],
+      "@peercrypt/offline": ["libs/offline/client/src/index.ts"],
+      "@peercrypt/online": ["libs/online/client/src/index.ts"],
       "@peercrypt/offline-server": ["libs/offline/server/src/index.ts"],
-      "@peercrypt/online-client": ["libs/online/client/src/index.ts"],
       "@peercrypt/online-server": ["libs/online/server/src/index.ts"],
       "@peercrypt/shared": ["libs/shared/src/index.ts"],
       "@peercrypt/volatalk-contact": ["volatalk/lib/contact/src/index.ts"],
