@@ -1,11 +1,14 @@
 {
     "cSpell.words": [
         "cacheable",
+        "dexie",
+        "indexeddb",
         "libsodium",
         "nrwl",
         "peercrypt",
         "peerjs",
         "proxied",
+        "shipit",
         "Vola",
         "volatalk"
     ]
