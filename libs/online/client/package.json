@@ -1,9 +1,9 @@
 {
   "name": "@peercrypt/online-client",
-  "version": "0.0.1",
+  "description": "P2P encrypted `WebRTC` client",
   "dependencies": {
-    "peerjs": "^1.5.1",
-    "tslib": "^2.3.0"
+    "@peercrypt/shared":"*",
+    "peerjs": "^1.5.1"
   },
   "type": "commonjs",
   "main": "./src/index.js",

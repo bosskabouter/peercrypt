@@ -1,11 +1,11 @@
 {
-  "name": "@volatalk/pwa",
+  "name": "@volatalk/server",
   "license": "MIT",
   "scripts": {},
   "private": true,
   "dependencies": {
-    "@peercrypt/offline-client": "*",
-    "@peercrypt/online-client": "*"
+    "@peercrypt/offline-server": "*",
+    "@peercrypt/online-server": "*"
   },
   "nx": {
     "includedScripts": []

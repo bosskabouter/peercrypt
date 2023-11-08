@@ -35,7 +35,7 @@ module.exports = (shipit) => {
     },
   });
 
-  shipit.on("published", function () {
+  shipit.on("published", async function () {
     const conf = shipit.config;
 
 
@@ -44,8 +44,8 @@ module.exports = (shipit) => {
     const cmdCopyClientWWW = `mkdir ${desWWW} -p & cp -R ${srcClientBuild} ${desWWW}`;
 
     const cdServer = `cd ${conf.deployTo}/current/ && `;
-    runRemote(cdServer + `npm i && npx nx run volatalk-server:build `);
-
+    await runRemote(cdServer + `npm i && npx nx run volatalk-server:build:production`);
+                                               
 
    // runRemote(cmdCopyClientWWW);
   });
