@@ -6,7 +6,7 @@
 
 ## Getting started
 
-To try out peercrypt, clone the project and start an example server and client using the following commands:
+To see a working example running peercrypt, clone the project and start an example server and client using the following commands:
 
 ```bash
 git clone https://github.com/bosskabouter/peercrypt.git
@@ -19,14 +19,14 @@ npx nx run example-server:serve & npx nx run example-client-react:preview:develo
 The peercrypt library consists of the following packages:
 
 - Client packages:
-  - [Online](./packages/online/) - P2P encrypted `WebRTC` client
-  - [Offline](./packages/offline/) - P2P encrypted `PushSubscription/Notification` client
-- Server packages:
-  - [OnlineServer](/packages/onlineServer/) (optional) - authenticating `WebRTC Signaling` server
-  - [OfflineServer](/packages/offlineServer/) - anonymized `Push Endpoint Relay` server
+  - [Online](./libs/online/client) - P2P encrypted `WebRTC` client
+  - [Offline](./libs/offline/client) - P2P encrypted `PushSubscription/Notification` client
+- (Optional) Server packages:
+  - [OnlineServer](/libs/online/server/) - a `WebRTC Signaling` server verifies the client's iD
+  - [OfflineServer](/libs/offline/server/) - relays encrypted messages to anonymized client's `Push Endpoint`
 - shared packages:
-  - [ID](/packages/id/) - ID contains asymmetric Signing and encryption keys. Already included in client and server packages
-  - [BIP (optional)](/packages/bip/) - Optional BIP32 Hierarchical Deterministic wallet Key and BIP39 mnemonic seed recovery phrase
+  - [shared](/libs/shared/) - Contains `ID` with asymmetric signing and encryption keys. Already included in client and server packages
+  - [BIP (optional)](/libs/bips/) - Optional BIP32 Hierarchical Deterministic wallet Key and BIP39 mnemonic seed recovery phrase
 
 For detailed information about each package, see their respective pages.
 
@@ -34,14 +34,14 @@ For detailed information about each package, see their respective pages.
 
 ### PeerCrypt ID
 
-All participants (client peers as well as server instances) need a `PeerCrypt ID` key which holds asymmetric keys for signing and encryption purposes, both derived from a common private seed (if provided). The shared library is exported from all client and server packages, but can also be imported directly from `"@peercrypt/id"`;
+All participants (client peers as well as server instances) need a `PeerCrypt ID` key which holds asymmetric keys for signing and encryption purposes, both derived from a common private seed (if provided). The shared library is exported from all client and server packages, but can also be imported directly from `"@peercrypt/shared"`;
 
 ```typescript
-import { ID } from '@peercrypt/id'; // or import from any of the other packages;
+import { ID } from '@peercrypt/shared'; // or import from any of the other packages;
 
-const id = await ID.create('(optional) unique strong seed value');
+const id = await ID.create('(optional) unique strong seed value' + Math.random());
 
-console.info(`Share your public Key: ` + id.pubKey);
+console.info(`Share your public Key: ` + id.pubicIdentifier);
 console.warn(`Save your private Seed: ` + id.seed);
 ```
 
@@ -51,9 +51,8 @@ console.warn(`Save your private Seed: ` + id.seed);
 import { OnlineServer, ID } from '@peercrypt/online-server';
 import { OfflineServer } from '@peercrypt/offline-server';
 
-ID.create('*a very strong* seed').then((id) => {
+ID.create(process.env.SEED).then((id) => {
   console.log('PeerCrypt Server using public ID: ' + id.pubKey);
-
   OnlineServer(id);
   OfflineServer(id);
 });
@@ -95,6 +94,8 @@ const anotherClientPubKey = '112f3845a60d8687721db5d722ad3875bfcf09facc1ff340b6b
 const online = new Online(id);
 const offline = await Offline.register(id);
 ```
+
+TODO: finish
 
 ## Contributions
 
