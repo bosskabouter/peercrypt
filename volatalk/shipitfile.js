@@ -29,7 +29,7 @@ module.exports = (shipit) => {
       branch: "master",
       deployTo: projectRoot + "/prod",
       pm2: {
-        json: projectRoot + "/prod/current/volatalk/pm2.prod.config.js",
+        json: projectRoot + "/server/pm2.prod.config.js",
 
       },
     },
@@ -44,7 +44,7 @@ module.exports = (shipit) => {
     const cmdCopyClientWWW = `mkdir ${desWWW} -p & cp -R ${srcClientBuild} ${desWWW}`;
 
     const cdServer = `cd ${conf.deployTo}/current/ && `;
-    runRemote(cdServer + `npm i`);
+    runRemote(cdServer + `npm i && npx nx run volatalk-server:build `);
 
 
    // runRemote(cmdCopyClientWWW);

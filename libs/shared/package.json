@@ -1,6 +1,6 @@
 {
   "name": "@peercrypt/shared",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "type": "commonjs",
   "main": "./src/index.js",
   "typings": "./src/index.d.ts",

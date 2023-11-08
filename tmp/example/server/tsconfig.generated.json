@@ -27,5 +27,5 @@
       ]
     }
   },
-  "extends": "../../../volatalk/server/tsconfig.app.json"
+  "extends": "../../../example/server/tsconfig.app.json"
 }

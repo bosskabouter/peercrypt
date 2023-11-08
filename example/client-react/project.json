@@ -12,8 +12,8 @@
         "outputPath": "dist/example/client-react"
       },
       "configurations": {
-        "development": {"watch": true,
-          "mode": "development","minify":false
+        "development": {
+          "mode": "development"
         },
         "production": {
           "mode": "production"
@@ -28,6 +28,7 @@
       },
       "configurations": {
         "development": {
+          "host":true,
           "buildTarget": "example-client-react:build:development",
           "hmr": true
         },

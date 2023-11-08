@@ -1,4 +1,4 @@
-{
+  {
   "name": "simplereact",
   "$schema": "../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "simplereact/src",
@@ -48,8 +48,6 @@
           "buildTarget": "simplereact:build:development"
         },
         "production": {
-          "host": true,
-          "https": true,
           "buildTarget": "simplereact:build:production"
         }
       }
