@@ -70,7 +70,6 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      //  external: ["@peercrypt/offline-client"]
     }
   }
 });

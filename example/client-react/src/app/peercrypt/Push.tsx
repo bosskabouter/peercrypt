@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { OfflineClient, ID } from "@peercrypt/offline-client";
+import { OfflineClient, ID, PushConfig } from "@peercrypt/offline-client";
 
 // import TEST_VAPID_KEYS from "../../../../conf.json"
-import { PushConfig } from "libs/offline/client/src/lib/config";
+// import { PushConfig } from "libs/offline/client/src/lib/config";
 
 const PORT = 3000;
 

@@ -69,9 +69,9 @@
     "ngx-deploy-npm": "^1.0.0"
   },
   "dependencies": {
-    "@peercrypt/offline": "file:libs/offline/client",
+    "@peercrypt/offline-client": "file:libs/offline/client",
+    "@peercrypt/online-client": "file:libs/online/client",
     "@peercrypt/offline-server": "file:libs/offline/server",
-    "@peercrypt/online": "file:libs/online/client",
     "@peercrypt/online-server": "file:libs/online/server",
     "@peercrypt/shared": "file:libs/shared",
     "@swc/helpers": "~0.5.2",

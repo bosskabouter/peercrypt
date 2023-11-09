@@ -19,8 +19,8 @@ npx nx run example-server:serve & npx nx run example-client-react:preview:develo
 The peercrypt library consists of the following packages:
 
 - Client packages:
-  - [Online](./libs/online/client) - P2P encrypted `WebRTC` client
-  - [Offline](./libs/offline/client) - P2P encrypted `PushSubscription/Notification` client
+  - [OnlineClient](./libs/online/client) - P2P encrypted `WebRTC` client
+  - [OfflineClient](./libs/offline/client) - P2P encrypted `PushSubscription/Notification` client
 - (Optional) Server packages:
   - [OnlineServer](/libs/online/server/) - a `WebRTC Signaling` server verifies the client's iD
   - [OfflineServer](/libs/offline/server/) - relays encrypted messages to anonymized client's `Push Endpoint`
@@ -67,16 +67,16 @@ PeerCrypt Server using public ID: 992f3845a60d8687721db5d722ad3875bfcf09facc5ff3
 ### An example On- & Offline PeerCrypt Client
 
 ```typescript
-import { Online } from '@peercrypt/online';
-import { Offline, ID } from '@peercrypt/offline';
+import { OnlineClient } from '@peercrypt/online-client';
+import { OfflineClient, ID } from '@peercrypt/offline-client';
 
 ID.create('*strong* seed').then(async (id) => {
   console.log('PeerCrypt Client using public ID: ' + id.pubKey);
 
   const serverPubKey = '992f3845a60d8687721db5d722ad3875bfcf09facc5ff340b6bd215ff568ac27';
 
-  const onlineClient = new Online(id, serverPubKey);
-  const offlineClient = await Offline.register(id, serverPubKey);
+  const onlineClient = new OnlineClient(id, serverPubKey);
+  const offlineClient = await OfflineClient.register(id, serverPubKey);
 });
 ```
 
@@ -91,8 +91,8 @@ PeerCrypt Client using public ID: 112f3845a60d8687721db5d722ad3875bfcf09facc1ff3
 ```typescript
 const anotherClientPubKey = '112f3845a60d8687721db5d722ad3875bfcf09facc1ff340b6bd215ff568ac27';
 
-const online = new Online(id);
-const offline = await Offline.register(id);
+const onlineClient = new OnlineClient(id);
+const offlineClient = await OfflineClient.register(id);
 ```
 
 TODO: finish

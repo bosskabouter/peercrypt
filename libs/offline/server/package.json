@@ -1,6 +1,6 @@
 {
   "name": "@peercrypt/offline-server",
-  "description": "relays encrypted messages to anonymized client's `Push Endpoint` using @peercrypt/offline",
+  "description": "relays encrypted messages to anonymized client's `Push Endpoint` using @peercrypt/offline-client",
   "dependencies": {
     "@peercrypt/shared":"*",
     "express": "~4.18.1",

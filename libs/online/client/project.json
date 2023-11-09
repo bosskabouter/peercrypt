@@ -1,5 +1,5 @@
 {
-  "name": "online",
+  "name": "online-client",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/online/client/src",
   "projectType": "library",
@@ -15,7 +15,7 @@
       }
     },
     "publish": {
-      "command": "node tools/scripts/publish.mjs online {args.ver} {args.tag}",
+      "command": "node tools/scripts/publish.mjs online-client {args.ver} {args.tag}",
       "dependsOn": ["build"]
     },
     "lint": {

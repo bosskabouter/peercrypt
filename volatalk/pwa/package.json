@@ -4,8 +4,8 @@
   "scripts": {},
   "private": true,
   "dependencies": {
-    "@peercrypt/offline": "*",
-    "@peercrypt/online": "*"
+    "@peercrypt/offline-client": "*",
+    "@peercrypt/online-client": "*"
   },
   "nx": {
     "includedScripts": []
