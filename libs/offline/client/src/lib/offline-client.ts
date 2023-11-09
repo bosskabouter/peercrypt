@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios from 'axios';
 
-import { Anonymized, ID, Sealed, addServiceWorkerHandle } from "../";
+import { Anonymized, ID, Sealed, addServiceWorkerHandle } from '../';
 // import { addServiceWorkerHandle } from "./sw-util";
 import {
   PushMessage,
@@ -9,9 +9,9 @@ import {
   PushVapidRequest,
   PushVapidResponse,
   PushEvents,
-} from "@peercrypt/offline-shared";
-import defaultConfig from "./config";
-import EventEmitter from "eventemitter3";
+} from '@peercrypt/offline-shared';
+import defaultConfig from './config';
+import { EventEmitter } from 'eventemitter3';
 
 /**
  * Client cLass with initialization for the given server config and client id. Enables pushing (and receiving) of encrypted messages through the push server.
@@ -27,10 +27,8 @@ The public key, on the other hand, is needed to register the peer's browser's Pu
 Once the client has subscribed, the unencrypted public key can be discarded, but the encrypted VapidKeys Keypair is stored and shared in a PushAuthorization with other peers, since they are needed by the server at the time of pushing. When this peer authorizes another peer to push, the encrypted key pair is sent to the other peer.
  */
 
-export class OfflineClient
-  extends EventEmitter<PushEvents>
-//implements PushI
-{
+export class OfflineClient extends EventEmitter<PushEvents> {
+  //implements PushI
   /**
    * USE `await Push.register()` to register a Push instance.
    *
@@ -58,11 +56,13 @@ export class OfflineClient
    */
   static async register(
     key: ID,
-    config = defaultConfig, MODE: 'production' | string = 'production'
+    config = defaultConfig,
+    MODE: 'production' | string = 'production'
   ): Promise<OfflineClient | null> {
     config = { ...defaultConfig, ...config };
-    const postURI = `${config.secure ? "https" : "http"}://${config.host}:${config.port
-      }${config.path}`;
+    const postURI = `${config.secure ? 'https' : 'http'}://${config.host}:${
+      config.port
+    }${config.path}`;
 
     let subscription = await awaitSWPushManagerSubscription();
     let anonymizedVapidKeys: Anonymized<{
@@ -77,34 +77,35 @@ export class OfflineClient
         config.PublicKey
       );
       console.debug(
-        "Not subscribed yet, requested vapid keys",
+        'Not subscribed yet, requested vapid keys',
         vapidSubscription
       );
 
       //store the encrypted vapid key pair
       anonymizedVapidKeys = vapidSubscription.encryptedVapidKeys;
-      console.debug("Storing anonymizedVapidKeys", anonymizedVapidKeys);
+      console.debug('Storing anonymizedVapidKeys', anonymizedVapidKeys);
 
       localStorage.setItem(
-        "encryptedVapidKeys",
+        'encryptedVapidKeys',
         JSON.stringify(anonymizedVapidKeys)
       );
       console.debug(
-        "Subscribing vapidPublicKey",
+        'Subscribing vapidPublicKey',
         vapidSubscription.vapidPublicKey
       );
       subscription = await subscribePushManager(
-        vapidSubscription.vapidPublicKey, MODE
+        vapidSubscription.vapidPublicKey,
+        MODE
       );
     } else {
       //restore the encrypted vapid key pair
       anonymizedVapidKeys = JSON.parse(
-        localStorage.getItem("encryptedVapidKeys")!
+        localStorage.getItem('encryptedVapidKeys')!
       );
     }
 
     if (subscription === null) {
-      console.warn("No subscription, no Push");
+      console.warn('No subscription, no Push');
       return null;
     }
 
@@ -113,10 +114,7 @@ export class OfflineClient
 
     updateServiceWorker(key);
 
-    const sealedPushSubscription = new Sealed(
-      subscription,
-      config.PublicKey
-    );
+    const sealedPushSubscription = new Sealed(subscription, config.PublicKey);
     const sharedSubscription: PushAuthorization = {
       sealedPushSubscription,
       anonymizedVapidKeys,
@@ -144,7 +142,7 @@ export class OfflineClient
     };
 
     const response = await axios.post(
-      this.postURI + "/push",
+      this.postURI + '/push',
       pushMessageRequest
     );
 
@@ -166,14 +164,16 @@ async function awaitSWPushManagerSubscription(): Promise<PushSubscription | null
   return subs;
 }
 async function subscribePushManager(
-  vapidPublicKey: string, MODE: 'production' | string
+  vapidPublicKey: string,
+  MODE: 'production' | string
 ): Promise<PushSubscription | null> {
   let serviceWorkerRegistration =
     await navigator.serviceWorker?.getRegistration();
 
   if (serviceWorkerRegistration === undefined) {
-    console.warn("PUSH: No serviceWorker Registration");
-    serviceWorkerRegistration = await navigator.serviceWorker?.register('/sw.ts',
+    console.warn('PUSH: No serviceWorker Registration');
+    serviceWorkerRegistration = await navigator.serviceWorker?.register(
+      '/sw.ts',
       { type: MODE === 'production' ? 'classic' : 'module' }
     );
   }
@@ -183,12 +183,12 @@ async function subscribePushManager(
       userVisibleOnly: true,
     });
     if (!subs) {
-      console.warn("PUSH: PushManager did not subscribe");
+      console.warn('PUSH: PushManager did not subscribe');
       return null;
     }
     return subs;
   } catch (e) {
-    console.error("Problem subscribing vapidKey: " + vapidPublicKey, e);
+    console.error('Problem subscribing vapidKey: ' + vapidPublicKey, e);
     throw e;
   }
 }
@@ -202,10 +202,10 @@ async function requestVapidKeys(
     peerId: key.publicIdentifier,
   };
 
-  const response = await axios.post(postURI + "/vapid", request);
+  const response = await axios.post(postURI + '/vapid', request);
 
   if (response.status !== 200)
-    throw Error("No VAPID Keys from PushServer: " + response.statusText);
+    throw Error('No VAPID Keys from PushServer: ' + response.statusText);
 
   const vapidR = response.data as Anonymized<PushVapidResponse>;
   Object.setPrototypeOf(vapidR, Anonymized.prototype);
@@ -218,8 +218,8 @@ async function requestVapidKeys(
  */
 export function updateServiceWorker(key: ID): void {
   navigator.serviceWorker.controller?.postMessage({
-    type: "UPDATE_KEY",
+    type: 'UPDATE_KEY',
     key: key.toJSON(),
   });
-  console.debug("Posted ID to SW")
+  console.debug('Posted ID to SW');
 }
