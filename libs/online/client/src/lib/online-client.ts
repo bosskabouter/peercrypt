@@ -1,14 +1,12 @@
-export default "@peercrypt/shared/ID";
-import Peer, { CallOption } from "peerjs";
-import {
+import Peer, {
+  CallOption,
   PeerJSOption,
   PeerConnectOption,
   DataConnection,
   MediaConnection,
-} from "peerjs";
-import { EventEmitter } from "eventemitter3";
-import { ID, SecureChannel } from "@peercrypt/shared";
-export * from "@peercrypt/shared";
+} from 'peerjs';
+import { EventEmitter } from 'eventemitter3';
+import { ID, SecureChannel } from '@peercrypt/shared';
 
 type EP2PeerEvents = {
   connected: SecureLayer;
@@ -51,22 +49,22 @@ export class OnlineClient extends EventEmitter<EP2PeerEvents> {
       this.isPeerCryptServer = this.certifyPeerCryptServer(options);
     }
     this.peer = new Peer(key.publicIdentifier, options);
-    this.peer.on("open", (serverAssignedId) =>
+    this.peer.on('open', (serverAssignedId) =>
       this.handleOpen(serverAssignedId)
     );
-    this.peer.on("connection", (dataConnection) =>
+    this.peer.on('connection', (dataConnection) =>
       this.handleConnection(dataConnection)
     );
-    this.peer.on("call", (mediaConnection) =>
+    this.peer.on('call', (mediaConnection) =>
       this.secureChannel(mediaConnection)
     );
 
     //simply re-emit the other events
-    this.peer.on("error", (e) => this.emit("error", e));
-    this.peer.on("disconnected", (currentId) =>
-      this.emit("disconnected", currentId)
+    this.peer.on('error', (e) => this.emit('error', e));
+    this.peer.on('disconnected', (currentId) =>
+      this.emit('disconnected', currentId)
     );
-    this.peer.on("close", () => this.emit("close"));
+    this.peer.on('close', () => this.emit('close'));
   }
   /**
    * Creates a new Connection to the peer using given options. A handshake is initiated to establish a common shared secret.
@@ -79,7 +77,10 @@ export class OnlineClient extends EventEmitter<EP2PeerEvents> {
     const secureChannel = this.key.initSecureChannel(peerId);
     const conn = this.peer.connect(peerId, {
       ...options,
-      metadata: secureChannel.encrypt({ tx: this.key.publicIdentifier, rx: peerId }),
+      metadata: secureChannel.encrypt({
+        tx: this.key.publicIdentifier,
+        rx: peerId,
+      }),
     });
     return new SecureLayer(conn, secureChannel);
   }
@@ -92,7 +93,7 @@ export class OnlineClient extends EventEmitter<EP2PeerEvents> {
     const secureChannel = this.secureChannel(dataConnection);
     if (secureChannel !== undefined) {
       const secureLayer = new SecureLayer(dataConnection, secureChannel);
-      this.emit("connected", secureLayer);
+      this.emit('connected', secureLayer);
     }
   }
 
@@ -109,8 +110,8 @@ export class OnlineClient extends EventEmitter<EP2PeerEvents> {
       return this.key.initSecureChannel(connection.peer);
     } catch (e: unknown) {
       connection.close();
-      console.warn("Invalid handshake from connection:", e, connection);
-      super.emit("error", new Error("Invalid handshake"));
+      console.warn('Invalid handshake from connection:', e, connection);
+      super.emit('error', new Error('Invalid handshake'));
       return undefined;
     }
   }
@@ -121,25 +122,27 @@ export class OnlineClient extends EventEmitter<EP2PeerEvents> {
    */
   private handleOpen(serverAssignedId: string): void {
     if (serverAssignedId !== this.key.publicIdentifier) {
-      throw Error("server assigned different ID");
+      throw Error('server assigned different ID');
     }
-    console.info("Emitted open");
-    this.emit("open", serverAssignedId, false);
+    console.info('Emitted open');
+    this.emit('open', serverAssignedId, false);
   }
 
   /**
    * Tests if the current connecting server accepts a normal (non-secure) peer client.
    * @returns true if the tested connection was closed.
    */
-  private async certifyPeerCryptServer(options: PeerJSOption): Promise<boolean> {
+  private async certifyPeerCryptServer(
+    options: PeerJSOption
+  ): Promise<boolean> {
     const insecurePeer = new Peer(`${Math.round(Math.random() * 1000000000)}`, {
       ...options,
       debug: 0,
       // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
-      logFunction(_logLevel, ..._rest) { },
+      logFunction(_logLevel, ..._rest) {},
     });
     return await new Promise((resolve) => {
-      insecurePeer.on("disconnected", (): void => {
+      insecurePeer.on('disconnected', (): void => {
         clearTimeout(connectionTimeout);
         resolve(true);
       });
@@ -220,24 +223,23 @@ export class SecureLayer extends EventEmitter<SecureLayerEvents> {
     readonly secureChannel: SecureChannel
   ) {
     super();
-    this.dataConnection.on("close", () => {
-      this.emit("close");
+    this.dataConnection.on('close', () => {
+      this.emit('close');
     });
 
-    this.dataConnection.on("error", (e) => {
-      this.emit("error", e);
+    this.dataConnection.on('error', (e) => {
+      this.emit('error', e);
     });
-    this.dataConnection.on("iceStateChanged", (state) => {
-      this.emit("iceStateChanged", state);
+    this.dataConnection.on('iceStateChanged', (state) => {
+      this.emit('iceStateChanged', state);
     });
-    this.dataConnection.on("open", () => {
-      this.dataConnection.on("data", (data) => {
-
+    this.dataConnection.on('open', () => {
+      this.dataConnection.on('data', (data) => {
         const decrypted: string = this.secureChannel.decrypt(data as string);
-        super.emit("decrypted", decrypted);
+        super.emit('decrypted', decrypted);
       });
 
-      this.emit("open");
+      this.emit('open');
     });
   }
 

@@ -8,6 +8,6 @@
     "libsodium-wrappers": "^0.7.13"
   },
   "devDependencies": {
-    "@types/libsodium-wrappers": "^0.7.11"
+    "@types/libsodium-wrappers": "^0.7.13"
   }
 }

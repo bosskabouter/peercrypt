@@ -9,7 +9,7 @@ import {
   PushVapidRequest,
   PushVapidResponse,
   PushEvents,
-} from "@peercrypt/shared";
+} from "@peercrypt/offline-shared";
 import defaultConfig from "./config";
 import EventEmitter from "eventemitter3";
 

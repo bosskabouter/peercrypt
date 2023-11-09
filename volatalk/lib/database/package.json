@@ -1,0 +1,13 @@
+{
+  "name": "volatalk-db",
+  "description": "Encrypted data for volatalk",
+  "license": "MIT",
+  "scripts": {},
+  "private": true,
+
+  "dependencies": {
+    "dexie": "^3.2.4"  },
+  "nx": {
+    "includedScripts": []
+  }
+}

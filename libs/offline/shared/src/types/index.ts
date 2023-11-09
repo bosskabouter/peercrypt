@@ -1,4 +1,4 @@
-import { ID, Anonymized, Cloaked, Sealed } from '../lib/shared';
+import { ID, Anonymized, Cloaked, Sealed } from '@peercrypt/shared';
 import EventEmitter from "eventemitter3";
 
 /**

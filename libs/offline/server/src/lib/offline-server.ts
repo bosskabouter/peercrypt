@@ -9,7 +9,6 @@ import { ID } from "@peercrypt/shared";
 import express = require("express");
 
 export * from "@peercrypt/shared";
-// export * from "@ep2/push";                                                                               
 
 export function ExpressOfflineServer(
   id: ID,

@@ -2,7 +2,8 @@
   "name": "@peercrypt/online-client",
   "description": "P2P encrypted `WebRTC` client",
   "dependencies": {
-    "@peercrypt/shared":"*",
+    "@peercrypt/shared": "*",
+    "eventemitter3": "^5.0.1",
     "peerjs": "^1.5.1"
   },
   "type": "commonjs",

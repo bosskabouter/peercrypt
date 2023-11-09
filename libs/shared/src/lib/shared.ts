@@ -1,4 +1,4 @@
-import * as sodium from "libsodium-wrappers";
+import * as sodium from 'libsodium-wrappers';
 
 /**
  * The core of the actual key holds the signKeyPair and boxKeyPair for a given key set.
@@ -24,12 +24,8 @@ export class ID {
 
     // Generate a seed if none was provided
     if (seed == null) {
-      //      console.info("sodium", sodium);
-
-      // console.info("sodium.ready", sodium.ready);
-      // console.info("sodium.randombytes_buf", sodium.randombytes_buf);
       seed = sodium.randombytes_buf(sodium.crypto_sign_SEEDBYTES);
-    } else if (typeof seed === "string") {
+    } else if (typeof seed === 'string') {
       // Convert a string seed to a Uint8Array
       seed = sodium.crypto_generichash(sodium.crypto_sign_SEEDBYTES, seed);
     }
@@ -53,7 +49,8 @@ export class ID {
       return sodium.from_hex(id);
     } catch (error) {
       throw new Error(
-        `Invalid peerId: ${id}. Error: ${error as string
+        `Invalid peerId: ${id}. Error: ${
+          error as string
         }. Did you create a key first? !sodium.ready`
       );
     }
@@ -165,16 +162,15 @@ The class encrypts and decrypts messages using a shared secret key derived from 
 Once a securedCannel is established
  */
 export class SecureChannel {
-
   /**
-  * The shared secret key derived from the public box keys of both sides of the channel.
-  */
+   * The shared secret key derived from the public box keys of both sides of the channel.
+   */
   private readonly sharedKey: Uint8Array;
 
   /**
-   * 
+   *
    * @param id this id
-   * @param otherId other pub id 
+   * @param otherId other pub id
    * @see sodium.crypto_box_beforenm
    */
   constructor(id: ID, otherId: string) {
@@ -292,7 +288,7 @@ export class Anonymized<ANY> extends Encrypted<ANY> {
       nonce,
       receiverKeyPublicKey,
       id.keySet.boxKeyPair.privateKey,
-      "base64"
+      'base64'
     );
     this.nonce = sodium.to_base64(nonce);
     // sign the cipher with the sender's private signing key
@@ -331,14 +327,14 @@ export class Anonymized<ANY> extends Encrypted<ANY> {
       decryptedPublicSigningKey
     );
 
-    if (!verified) throw Error("Failed to verify message signature");
+    if (!verified) throw Error('Failed to verify message signature');
 
     this.cipher = sodium.crypto_box_open_easy(
       cipher.slice(sodium.crypto_sign_BYTES),
       nonce,
       senderPublicBoxKey,
       id.keySet.boxKeyPair.privateKey,
-      "text"
+      'text'
     );
     return super.decrypt();
   }
@@ -353,7 +349,7 @@ export class Sealed<ANY> extends Encrypted<ANY> {
     this.cipher = sodium.crypto_box_seal(
       this.cipher,
       receiverPublicBoxKey,
-      "base64"
+      'base64'
     );
   }
 
@@ -363,7 +359,7 @@ export class Sealed<ANY> extends Encrypted<ANY> {
       c,
       id.keySet.boxKeyPair.publicKey,
       id.keySet.boxKeyPair.privateKey,
-      "text"
+      'text'
     );
     return super.decrypt(id);
   }
@@ -388,12 +384,12 @@ export class Cloaked<ANY> extends Encrypted<ANY> {
     this.cipher = sodium.crypto_box_seal(
       this.cipher,
       receiverPublicBoxKey,
-      "base64"
+      'base64'
     );
     this.encryptedSenderPublicBoxKey = sodium.crypto_box_seal(
       senderPublicBoxKey,
       receiverPublicBoxKey,
-      "base64"
+      'base64'
     );
   }
 
@@ -410,7 +406,7 @@ export class Cloaked<ANY> extends Encrypted<ANY> {
       sodium.from_base64(this.cipher),
       id.keySet.boxKeyPair.publicKey,
       id.keySet.boxKeyPair.privateKey,
-      "text"
+      'text'
     );
     return { ...super.decrypt(), sender: this.sender };
   }

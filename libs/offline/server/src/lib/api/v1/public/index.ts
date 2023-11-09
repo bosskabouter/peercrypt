@@ -1,7 +1,7 @@
 import * as express from "express";
 import type { EP2PushServerConfig } from "../../../config";
 
-import { PushMessageRequest,PushVapidResponse } from "@peercrypt/shared";
+import { PushMessageRequest,PushVapidResponse } from "@peercrypt/offline-shared";
 
 import * as webpush from "web-push";
 import { ID, Anonymized, Sealed } from "@peercrypt/shared";

@@ -2,9 +2,9 @@
   "name": "@peercrypt/offline-client",
   "description": "P2P encrypted `PushSubscription/Notification` client for @peercrypt/offline-server",
   "dependencies": {
-    "@peercrypt/shared":"*",
-    "axios":"^1.5.1",
-    "eventemitter3":"^5.0.1"
+    "@peercrypt/offline-shared":"*",
+
+    "axios":"^1.6.1"
   },
   "type": "commonjs",
   "main": "./src/index.js",

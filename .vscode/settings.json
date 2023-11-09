@@ -1,13 +1,21 @@
 {
     "cSpell.words": [
+        "afternm",
+        "beforenm",
         "cacheable",
+        "ciphertext",
         "dexie",
+        "espsk",
+        "generichash",
         "indexeddb",
+        "keypair",
         "libsodium",
+        "NONCEBYTES",
         "nrwl",
         "peercrypt",
         "peerjs",
         "proxied",
+        "SEEDBYTES",
         "shipit",
         "Vola",
         "volatalk"
