@@ -2,3 +2,4 @@ node_modules/
 **/dist/
 tmp/
 .nx/cache
+volatalk/pwa/dev-dist/
