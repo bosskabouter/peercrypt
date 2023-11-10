@@ -3,7 +3,7 @@ module.exports = {
     {
       name: "Volatalk-Server-Prod",
       
-      script: "prod/current/dist/volatalk/server/main.js",
+      script: "volatalk/prod/current/dist/volatalk/server/main.js",
       watch: false,
       env: {
         PORT: 2000,
