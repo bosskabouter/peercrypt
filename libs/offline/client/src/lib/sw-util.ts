@@ -1,4 +1,4 @@
-import { ID, Cloaked } from "@peercrypt/shared";
+import { ID, Cloaked } from "@peercrypt/offline-shared";
 
 interface PeriodicSyncManager {
   register: (tag: string, options?: { minInterval: number }) => Promise<void>;

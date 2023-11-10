@@ -4,7 +4,7 @@ import type { EP2PushServerConfig } from "../../../config";
 import { PushMessageRequest,PushVapidResponse } from "@peercrypt/offline-shared";
 
 import * as webpush from "web-push";
-import { ID, Anonymized, Sealed } from "@peercrypt/shared";
+import { ID, Anonymized, Sealed } from "@peercrypt/offline-shared";
 
 export const HTTP_ERROR_PUSH_TOO_BIG = 507;
 export default ({

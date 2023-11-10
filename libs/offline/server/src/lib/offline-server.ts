@@ -5,10 +5,8 @@ import type { Express } from "express";
 import { createInstance } from "./instance";
 import type { EP2PushServerConfig } from "./config";
 import defaultConfig from "./config";
-import { ID } from "@peercrypt/shared";
+import { ID } from "@peercrypt/offline-shared";
 import express = require("express");
-
-export * from "@peercrypt/shared";
 
 export function ExpressOfflineServer(
   id: ID,

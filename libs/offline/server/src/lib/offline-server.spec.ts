@@ -6,7 +6,7 @@ import * as publicContent from "./app.json";
 import * as webpush from "web-push";
 import { OfflineServer, ExpressOfflineServer } from "../";
 
-import { ID,  Anonymized, Sealed} from "@peercrypt/shared";
+import { ID,  Anonymized, Sealed} from "@peercrypt/offline-shared";
 
 import * as TEST_PUSH_SUBSCRIPTION from "./push-subscription.spec.json";
 import {
@@ -14,7 +14,7 @@ import {
   PushMessageRequest,
   PushVapidResponse,
   PushMessage,
-} from "@peercrypt/shared";
+} from "@peercrypt/offline-shared";
 import { HTTP_ERROR_PUSH_TOO_BIG } from "./api/v1/public";
 
 const TEST_PORT = 2000 + Math.floor(Math.random() * 5000);
