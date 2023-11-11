@@ -49,17 +49,18 @@ module.exports = (shipit) => {
     );
     shipit.emit('built');
   });
+
   async function runRemote(cmd) {
     const res = await shipit.remote(cmd);
     shipit.log(res.stdout);
   }
 
-  const path = require('path');
-  const ecosystemFilePath = path.join(
-    shipit.config.deployTo,
-    'shared',
-    'ecosystem.config.js'
-  );
+  // const path = require('path');
+  // const ecosystemFilePath = path.join(
+  //   shipit.config.deployTo,
+  //   'shared',
+  //   'ecosystem.config.js'
+  // );
 
   // Our listeners and tasks will go here
 };

@@ -73,8 +73,7 @@
       }
     },
     "shipit": {
-      "command": "cd ./volatalk/server && npx shipit prod deploy",
-      "dependsOn": ["build"]
+      "command": "cd ./volatalk/server && npx shipit prod deploy"
     }
 
   },
