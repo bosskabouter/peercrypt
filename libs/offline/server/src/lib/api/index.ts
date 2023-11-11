@@ -7,7 +7,7 @@ import PublicApi from "./v1/public";
 import type { EP2PushServerConfig } from "../config";
 import  * as pubContent from "../app.json" ;
 import { ID } from "../../";
-import version from "./version";
+// import version from "./version";
 
 export const Api = ({
   key,
@@ -24,9 +24,9 @@ export const Api = ({
   router.get("/", (_, res) => {
     res.send(pubContent);
   });
-  router.get("/version", (_, res) => {
-    res.send(version());
-  });
+  // router.get("/version", (_, res) => {
+  //   res.send(version());
+  // });
   router.use("/", PublicApi({ key, config }));
 
   return router;

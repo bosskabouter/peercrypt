@@ -12,7 +12,8 @@
         "tsConfig": "libs/offline/server/tsconfig.lib.json",
         "packageJson": "libs/offline/server/package.json",
         "main": "libs/offline/server/src/index.ts",
-        "assets": ["libs/offline/server/*.md"]
+        "assets": ["libs/offline/server/*.md", "libs/offline/server/src/lib/app.json"]
+        
       }
     },
     "publish": {
