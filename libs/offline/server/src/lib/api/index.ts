@@ -5,7 +5,7 @@ import {Router} from "express";
 
 import PublicApi from "./v1/public";
 import type { EP2PushServerConfig } from "../config";
-import  * as pubContent from "../app.json" ;
+// import  * as pubContent from "../app.json" ;
 import { ID } from "../../";
 // import version from "./version";
 
@@ -22,7 +22,7 @@ export const Api = ({
   // corsOptions && router.use(cors());
 
   router.get("/", (_, res) => {
-    res.send(pubContent);
+    res.send("peercrypt offline service");
   });
   // router.get("/version", (_, res) => {
   //   res.send(version());
