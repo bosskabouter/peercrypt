@@ -11,7 +11,7 @@ module.exports = (shipit) => {
       branch: 'master',
       deployTo: projectRoot + '/test',
       repositoryUrl: 'https://github.com/bosskabouter/peercrypt.git',
-      keepReleases: 5,
+      keepReleases: 2,
       // shared: {
       //   overwrite: true,
       //   dirs: ['node_modules'],
@@ -33,26 +33,25 @@ module.exports = (shipit) => {
     },
   });
 
-  shipit.on('published', async function () {
-    const conf = shipit.config;
+  shipit.on('updated', async function () {
+    shipit.start('build');
+    // const conf = shipit.config;
 
-    const srcClientBuild = `${conf.deployTo}/current/client/build/*`;
-    const desWWW = `/var/www/volatalk/${conf.branch}/`;
-    const cmdCopyClientWWW = `mkdir ${desWWW} -p & cp -R ${srcClientBuild} ${desWWW}`;
+    // const srcClientBuild = `${conf.deployTo}/current/client/build/*`;
+    // const desWWW = `/var/www/volatalk/${conf.branch}/`;
+    // const cmdCopyClientWWW = `mkdir ${desWWW} -p & cp -R ${srcClientBuild} ${desWWW}`;
 
-    const cdServer = `cd ${conf.deployTo}/current/ && `;
-    await runRemote(
-      cdServer + `npm i && nx run-many --targets=build`
-    ).catch(console.error);
-
-    // runRemote(cmdCopyClientWWW);
   });
 
+  shipit.blTask('build', async () => {
+    await runRemote(
+      `cd ${shipit.releasePath} && npm i &&  nx run-many --targets=build`
+    );
+    shipit.emit('built');
+  });
   async function runRemote(cmd) {
-    shipit.log('CMD: ' + cmd);
-    let result = (await shipit.remote(cmd))[0].child;
-
-    shipit.log('exitCode: ' + result.exitCode);
+    const res = await shipit.remote(cmd);
+    shipit.log(res.stdout);
   }
 
   const path = require('path');

@@ -10,7 +10,7 @@ import {
 } from 'peer';
 
 import { ID } from '@peercrypt/shared';
-import version from './version/';
+// import version from './version/';
 
 export * from '@peercrypt/shared';
 
@@ -74,6 +74,6 @@ function initialize(
     }
   });
 
-  server.get(path + '/version', (_req, res) => res.send(version));
+ // server.get(path + '/version', (_req, res) => res.send(version));
   return server as Express & PeerServerEvents & OnlineServerEvents;
 }
