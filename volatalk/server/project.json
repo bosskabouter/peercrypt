@@ -75,10 +75,10 @@
     "shipit": {
       "command": "cd ./volatalk/server && npx shipit prod deploy"
     },
-    "pm2": {
+    "pm2": {  
       "executor": "nx-pm2-plugin:pm2-executor",
       "options": {
-        "command": "volatalk-server:serve:production -f",
+        "command": "volatalk-server:serve:production",
         "name": "volatalk-services",
         "autorestart": true
       }
