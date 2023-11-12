@@ -1,5 +1,6 @@
 {
   "name": "@peercrypt/shared",
+  "version": "1.2.1",
   "description": "Common encryption classes for peer-2-peer communication",
   "type": "commonjs",
   "main": "./src/index.js",
