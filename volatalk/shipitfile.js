@@ -1,6 +1,6 @@
 module.exports = (shipit) => {
   require('shipit-deploy')(shipit);
-  require('shipit-shared')(shipit);
+  // require('shipit-shared')(shipit);
   require('shipit-pm2')(shipit);
 
   const projectRoot = './volatalk';
@@ -20,16 +20,16 @@ module.exports = (shipit) => {
     test: {
       branch: 'develop',
       deployTo: projectRoot + '/test',
-      pm2: {
-        json: projectRoot + '/server/pm2.test.config.js',
-      },
+      // pm2: {
+      //   json: projectRoot + '/server/pm2.test.config.js',
+      // },
     },
     prod: {
       branch: 'master',
       deployTo: projectRoot + '/prod',
-      pm2: {
-        json: projectRoot + '/server/pm2.prod.config.js',
-      },
+      // pm2: {
+      //   json: projectRoot + '/server/pm2.prod.config.js',
+      // },
     },
   });
 
@@ -47,7 +47,9 @@ module.exports = (shipit) => {
       `cd ${shipit.releasePath} && 
       npm i &&  
       nx run-many --targets=build && 
-      nx run volatalk-server:pm2`
+      nx run volatalk-server:pm2
+      
+      `
     );
     shipit.emit('built');
   });

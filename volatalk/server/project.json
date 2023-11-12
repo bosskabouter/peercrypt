@@ -79,7 +79,7 @@
       "executor": "nx-pm2-plugin:pm2-executor",
       "options": {
         "command": "volatalk-server:serve:production",
-        "name": "volatalk-services",
+        "name": "volatalk-services", 
         "autorestart": true
       }
     }
