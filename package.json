@@ -1,5 +1,6 @@
 {
   "name": "@peercrypt/source",
+  "version": "1.2.1",
   "description": "Encrypted On- and Offline Peer-2-Peer for VolaTalk",
   "license": "MIT",
   "scripts": {},

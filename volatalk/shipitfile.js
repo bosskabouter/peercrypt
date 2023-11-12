@@ -1,7 +1,7 @@
 module.exports = (shipit) => {
   require('shipit-deploy')(shipit);
   // require('shipit-shared')(shipit);
-  require('shipit-pm2')(shipit);
+  // require('shipit-pm2')(shipit);
 
   const projectRoot = './volatalk';
 
@@ -34,7 +34,7 @@ module.exports = (shipit) => {
   });
 
   shipit.on('updated', async function () {
-    await shipit.start('npm-i');
+    await shipit.start('install');
 
     // const conf = shipit.config;
 
@@ -43,15 +43,15 @@ module.exports = (shipit) => {
     // const cmdCopyClientWWW = `mkdir ${desWWW} -p & cp -R ${srcClientBuild} ${desWWW}`;
   });
 
-  shipit.blTask('npm-i', async () => {
+  shipit.blTask('install', async () => {
     await runRemote(
       `cd ${shipit.releasePath} && 
       npm i &&
-      nx run volatalk-server:pm2 --args=PORT=2334
+      nx run volatalk-server:pm2 --PORT=2334
 
       `
     );
-    shipit.emit('built');
+    shipit.emit('installed');
   });
 
   async function runRemote(cmd) {

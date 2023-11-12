@@ -78,9 +78,9 @@
     "pm2": {  
       "executor": "nx-pm2-plugin:pm2-executor",
       "dependsOn": ["build"],
-      "options": {
+      "options": {    
         "command": "volatalk-server:serve:production",
-        "name": "volatalk-services-${NO_OF_INSTANCES}", 
+        "name": "volatalk-peercrypt", 
         "autorestart": true
       }
     }
