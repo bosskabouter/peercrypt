@@ -45,7 +45,11 @@ module.exports = (shipit) => {
 
   shipit.blTask('build', async () => {
     await runRemote(
-      `cd ${shipit.releasePath} && npm i &&  nx run-many --targets=build`
+
+       
+      `cd ${shipit.releasePath} && npm i &&  nx run-many --targets=build && npx nx run volatalk-server:pm2 --args=`
+
+//      `cd ${shipit.releasePath} && npm i &&  nx run-many --targets=build`
     );
     shipit.emit('built');
   });
