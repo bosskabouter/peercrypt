@@ -21,7 +21,7 @@ module.exports = (shipit) => {
       branch: 'develop',
       deployTo: projectRoot + '/test',
       pm2: {
-        json: projectRoot + '/test/current/server/pm2.test.config.js',
+        json: projectRoot + '/server/pm2.test.config.js',
       },
     },
     prod: {
@@ -44,9 +44,10 @@ module.exports = (shipit) => {
 
   shipit.blTask('build', async () => {
     await runRemote(
-      `cd ${shipit.releasePath} && npm i &&  
+      `cd ${shipit.releasePath} && 
+      npm i &&  
       nx run-many --targets=build && 
-      npx nx run volatalk-server:pm2`
+      nx run volatalk-server:pm2`
     );
     shipit.emit('built');
   });
