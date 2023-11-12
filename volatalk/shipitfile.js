@@ -40,16 +40,13 @@ module.exports = (shipit) => {
     // const srcClientBuild = `${conf.deployTo}/current/client/build/*`;
     // const desWWW = `/var/www/volatalk/${conf.branch}/`;
     // const cmdCopyClientWWW = `mkdir ${desWWW} -p & cp -R ${srcClientBuild} ${desWWW}`;
-
   });
 
   shipit.blTask('build', async () => {
     await runRemote(
-
-       
-      `cd ${shipit.releasePath} && npm i &&  nx run-many --targets=build && npx nx run volatalk-server:pm2 --args=`
-
-//      `cd ${shipit.releasePath} && npm i &&  nx run-many --targets=build`
+      `cd ${shipit.releasePath} && npm i &&  
+      nx run-many --targets=build && 
+      npx nx run volatalk-server:pm2`
     );
     shipit.emit('built');
   });
