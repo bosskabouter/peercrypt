@@ -24,6 +24,10 @@
         ]
       }
     },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs offline-shared {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
