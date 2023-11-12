@@ -34,7 +34,8 @@ module.exports = (shipit) => {
   });
 
   shipit.on('updated', async function () {
-    shipit.start('build');
+    await shipit.start('npm-i');
+
     // const conf = shipit.config;
 
     // const srcClientBuild = `${conf.deployTo}/current/client/build/*`;
@@ -42,13 +43,12 @@ module.exports = (shipit) => {
     // const cmdCopyClientWWW = `mkdir ${desWWW} -p & cp -R ${srcClientBuild} ${desWWW}`;
   });
 
-  shipit.blTask('build', async () => {
+  shipit.blTask('npm-i', async () => {
     await runRemote(
       `cd ${shipit.releasePath} && 
-      npm i &&  
-      nx run-many --targets=build && 
-      nx run volatalk-server:pm2
-      
+      npm i &&
+      nx run volatalk-server:pm2 --args=PORT=2334
+
       `
     );
     shipit.emit('built');

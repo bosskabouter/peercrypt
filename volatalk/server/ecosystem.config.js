@@ -1,12 +1,12 @@
 module.exports = {
     apps: [
       {
-        name: "volatalk-peercrypt",
-        script: "../../dist/volatalk/server/dist/index.js",
+        name: "volatalk-services-eco",
+        script: "nx run volatalk-server:build:production",
         watch: false,
         env: {
-          PORT: 2000,
-          CTX:'/peercrypt'
+          PORT: 2030,
+          CTX:'/peercrypt-eco'
           //"NODE_ENV": "development"
         },  
       }
