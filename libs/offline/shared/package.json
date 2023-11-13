@@ -1,7 +1,5 @@
 {
   "name": "@peercrypt/offline-shared",
-  "version": "1.2.1",
-  "private": "false",
   "dependencies": {
     "@peercrypt/shared": "*",
     "tslib": "^2.3.0",

@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+//import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import basicSsl from '@vitejs/plugin-basic-ssl'
 
 import { VitePWA } from 'vite-plugin-pwa'
@@ -21,7 +21,8 @@ export default defineConfig({
     host: 'localhost',
   },
 
-  plugins: [react(), nxViteTsPaths(), basicSsl(), 
+  plugins: [react(), //nxViteTsPaths(), 
+    basicSsl(), 
   // tsconfigPaths(),
 
 

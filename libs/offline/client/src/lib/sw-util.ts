@@ -10,7 +10,7 @@ declare global {
   }
 }
 
-export async function addServiceWorkerHandle(): Promise<boolean> {
+export async function   addServiceWorkerHandle(): Promise<boolean> {
   return new Promise<boolean>((resolve, reject) => {
     window.addEventListener("load", () => {
       if ("serviceWorker" in navigator) {
@@ -177,6 +177,8 @@ export function OfflineSW(
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function handlePushSubscriptionChange(event:any): void {
+    console.info("handlePushSubscriptionChange", event)
+
     event.waitUntil(
       sw.registration.pushManager
         .subscribe(event.oldSubscription.options)
