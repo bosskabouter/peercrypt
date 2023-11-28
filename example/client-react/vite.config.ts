@@ -3,9 +3,10 @@ import react from '@vitejs/plugin-react';
 // import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 
 import { VitePWA } from 'vite-plugin-pwa';
+import ViteTsConfigPathsPlugin from 'vite-tsconfig-paths';
 
 export default defineConfig({
-  cacheDir: '../../node_modules/.vite/example-client-react',
+  // cacheDir: '../../node_modules/.vite/example-client-react',
 
   server: {
     port: 4200,
@@ -20,12 +21,14 @@ export default defineConfig({
   plugins: [
     react(),
     // nxViteTsPaths(),
-
+    ViteTsConfigPathsPlugin({
+      root: '..',
+    }),
     VitePWA({
-      mode: 'development',
-
+      mode: 'production',
+      // registerType:'autoUpdate',
       devOptions: {
-        type: 'module',
+        type: 'classic',
         enabled: true,
       },
       //https://vite-pwa-org.netlify.app/guide/register-service-worker.html

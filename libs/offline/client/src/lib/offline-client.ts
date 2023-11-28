@@ -157,39 +157,88 @@ async function awaitSWPushManagerSubscription(): Promise<PushSubscription | null
     await navigator.serviceWorker?.getRegistration();
 
   if (serviceWorkerRegistration === undefined) {
+    console.info('serviceWorkerRegistration is NULL');
     return null;
   }
 
   const subs = await serviceWorkerRegistration.pushManager.getSubscription();
+  if (subs === null)
+    console.info(
+      'serviceWorkerRegistration.pushManager.getSubscription() returned NULL'
+    );
   return subs;
 }
+
 async function subscribePushManager(
   vapidPublicKey: string,
   MODE: 'production' | string
 ): Promise<PushSubscription | null> {
-  let serviceWorkerRegistration =
+  const serviceWorkerRegistration =
     await navigator.serviceWorker?.getRegistration();
 
   if (serviceWorkerRegistration === undefined) {
-    console.warn('PUSH: No serviceWorker Registration');
-    serviceWorkerRegistration = await navigator.serviceWorker?.register(
-      '/sw.ts',
-      { type: MODE === 'production' ? 'classic' : 'module' }
+    console.info('No serviceWorker Registration yet, not subscribing pushmanager...');//registering SW:' + MODE);
+    return null;
+    // serviceWorkerRegistration = await navigator.serviceWorker?.register(
+    //   '/sw.js',
+    //   {
+    //     type: 'classic',
+    //     // updateViaCache:'none'
+    //   }
+    //   // { type: MODE === 'production' ? 'classic' : 'module' }
+    // );
+  }
+  const pushManager = serviceWorkerRegistration.pushManager;
+
+  //try to find existing subscription
+  let subscription = await pushManager.getSubscription();
+  subscription && console.info('Found existing subscription: ', subscription);
+  if (subscription) {
+    // const currentServerKey = subscription.options.applicationServerKey;
+
+    //check if user was subscribed with a different key
+    const json = subscription.toJSON();
+    const currentSubscriptionServerPublicKey = json?.keys?.['p256dh'];
+
+    console.log(
+      'currentSubscriptionServerPublicKey',
+      currentSubscriptionServerPublicKey
     );
+
+    if (
+      currentSubscriptionServerPublicKey &&
+      currentSubscriptionServerPublicKey !== vapidPublicKey
+    ) {
+      console.info(
+        'Unsubscribing existing subscription',
+        currentSubscriptionServerPublicKey
+      );
+      const unsubscribed = await subscription.unsubscribe();
+      console.info('unsubscribed', unsubscribed);
+    } else {
+      console.info(
+        'Returning current subscription with server public key: ' +
+          currentSubscriptionServerPublicKey
+      );
+      return subscription;
+    }
   }
   try {
-    const subs = await serviceWorkerRegistration.pushManager.subscribe({
+    subscription = await pushManager.subscribe({
       applicationServerKey: vapidPublicKey,
       userVisibleOnly: true,
     });
-    if (!subs) {
+    if (!subscription) {
       console.warn('PUSH: PushManager did not subscribe');
       return null;
+    } else {
+      console.info('Subscribed', subscription);
     }
-    return subs;
-  } catch (e) {
-    console.error('Problem subscribing vapidKey: ' + vapidPublicKey, e);
-    throw e;
+    return subscription;
+  } catch (e: any) {
+    console.error('Problem subscribing vapidKey:' + vapidPublicKey, e);
+    // throw e;
+    return null;
   }
 }
 

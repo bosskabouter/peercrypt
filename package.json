@@ -48,11 +48,9 @@
     "jest-environment-jsdom": "^29.7.0",
     "jest-environment-node": "^29.7.0",
     "jsdom": "~22.1.0",
-    "ngx-deploy-npm": "^7.0.1 ",
+    "ngx-deploy-npm": "^6.0.0",
     "nx": "16.5.5",
     "nx-cloud": "16.5.2",
-    "nx-pm2-plugin": "^1.0.5",
-    "pm2": "^5.3.0",
     "prettier": "^2.6.2",
     "shipit-cli": "^5.3.0",
     "shipit-deploy": "^5.3.0",
@@ -80,7 +78,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "6.18.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.5.0"
   },
   "nx": {
     "includedScripts": []

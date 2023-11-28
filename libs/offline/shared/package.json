@@ -2,7 +2,6 @@
   "name": "@peercrypt/offline-shared",
   "dependencies": {
     "@peercrypt/shared": "*",
-    "tslib": "^2.3.0",
     "eventemitter3": "^5.0.1"
   },
   "type": "commonjs",

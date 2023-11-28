@@ -12,6 +12,8 @@ import {
 
 declare const self: ServiceWorkerGlobalScope;
 
+console.info("Installing SW 1")
+
 self.skipWaiting().catch(e => { console.error(e) })
 // clientsClaim()
 
@@ -26,6 +28,7 @@ precacheAndRoute(self.__WB_MANIFEST);
 
 // cleanupOutdatedCaches()
 try {
+  console.info("Installing SW 2")
   OfflineSW(self);
  } catch (error) {
   console.error("Problem registering securePush worker: ", error);
